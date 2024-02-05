@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MadhuKumarGowda/NodewithExpress.git"
+    "url": "git+https://github.com/MadhuKumarGowda/Express.git"
   },
   "keywords": [
     "nodewithexpress",
@@ -18,7 +18,7 @@
   "author": "Madhu Kumar K S",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MadhuKumarGowda/NodewithExpress/issues"
+    "url": "https://github.com/MadhuKumarGowda/Express.git/issues"
   },
   "homepage": "https://github.com/MadhuKumarGowda/NodewithExpress#readme"
 }
