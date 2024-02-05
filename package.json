@@ -1,0 +1,24 @@
+{
+  "name": "nodewithexpress",
+  "version": "1.0.0",
+  "description": "node with express features",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadhuKumarGowda/NodewithExpress.git"
+  },
+  "keywords": [
+    "nodewithexpress",
+    "node",
+    "express"
+  ],
+  "author": "Madhu Kumar K S",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MadhuKumarGowda/NodewithExpress/issues"
+  },
+  "homepage": "https://github.com/MadhuKumarGowda/NodewithExpress#readme"
+}
