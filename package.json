@@ -1,7 +1,7 @@
 {
   "name": "nodewithexpress",
   "version": "1.0.0",
-  "description": "node with express features",
+  "description": "Learning node with express features",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/MadhuKumarGowda/Express.git/issues"
   },
-  "homepage": "https://github.com/MadhuKumarGowda/NodewithExpress#readme"
+  "homepage": "https://github.com/MadhuKumarGowda/NodewithExpress#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
