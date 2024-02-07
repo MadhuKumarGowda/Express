@@ -33,6 +33,34 @@ app.get('/',(req,res)=>{
        })
 })
 
+// This is GET method which perform fetch the movie of specific ID
+// ID parameter submitted via URL as Route Parameter
+// All Route Parameters are property of params object
+app.get('/:id',(req,res)=>{
+     
+    // coverting from string to int
+     const id = +req.params.id;
+     const movie = movies.find((item)=>{
+         item.id === id;
+     })
+     if(movie){
+        res.status(200).json({
+            status: 'success',
+            data: {
+                movies: movie
+            }
+         })
+     }else{
+        res.status(404).json({
+            status: 'Failure',
+            data: {
+                message: `Movie with ID ${id} not found`            }
+         })
+     }
+     
+})
+
+
 // this is POST method which perform write operation to the server / database
 // For demo purpose, i am adding new data via postman to writing to local json file
 app.post('/', (req,res)=>{
@@ -56,6 +84,9 @@ app.post('/', (req,res)=>{
   });
   // res.send("Data Created");
 })
+
+
+
 // Creating server with port number 3000
 const port = 3000;
 app.listen(port, ()=>{
