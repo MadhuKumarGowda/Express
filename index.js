@@ -7,9 +7,16 @@ const fs = require('fs');
 const express = require('express');
 let app = express();
 
+// cusotm middle wear 
+const logger = function(req,res,next){
+    console.log("Custom middlewear called");
+    next();
+}
+
 // Below is the one of the middlewaer, it will modify the 
 // incoming reqeust
 app.use(express.json())
+app.use(logger);
 
 const movies = JSON.parse(fs.readFileSync('./data/movies.json'));
 
@@ -58,6 +65,44 @@ app.get('/:id',(req,res)=>{
          })
      }
      
+})
+
+// PUT Method Demonstarte
+// Need to send complete object body to update the data.
+app.put("/:id",(req,res)=>{
+   
+
+   
+})
+
+// Patch Method Demonstarte
+// Need to send partial data which to be updated.
+app.patch("/:id",(req,res)=>{
+    const id = +req.params.id;
+   let movieToUpdate = movies.find(item=>item.id == id)
+
+   if(movieToUpdate){
+    let index = movies.indexOf(movieToUpdate);
+    Object.assign(movieToUpdate, req.body);
+    movies[index] = movieToUpdate;
+    
+    fs.writeFile('./data/movies.json', JSON.stringify(movies),()=>{
+     res.status(200).json({
+         status: "success",
+         data:{
+             movie: movieToUpdate
+         }
+        })
+    });
+   }else{
+    res.status(404).json({
+        status: "Fail",
+        data:{
+            message: `Movie with ID ${id} not found` 
+        }
+       })
+   }
+   
 })
 
 
