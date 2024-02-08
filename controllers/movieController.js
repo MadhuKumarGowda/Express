@@ -17,7 +17,6 @@ exports.getAllMovies = (req,res)=>{
 }
 
 exports.getMovie = (req,res)=>{
-    debugger;
     const id = +req.params.id;
     const movie = movies.find((item)=>{
         item.id === id;
