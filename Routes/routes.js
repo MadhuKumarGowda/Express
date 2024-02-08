@@ -6,8 +6,9 @@ File cretaed on 08th Feb 2024 by Madhu Kumar KS
 */
 
 const express = require('express');
-const router = express.Router();
 const movieController = require('../controllers/movieController')
+const router = express.Router();
+
 
 // param is another middlewear 
 // which only runs on routing with parameter with request
@@ -16,7 +17,7 @@ router.param('id',movieController.checkID)
 
 router.route('/')
     .get(movieController.getAllMovies)
-    .post(movieController.createMovie)
+    .post(movieController.validateBody, movieController.createMovie)
 
 
 router.route('/:id')

@@ -23,6 +23,17 @@ exports.checkID = (req,res,next,value)=>{
     next();
 }
 
+exports.validateBody = (req, res, next)=>{
+    console.log(req.body);
+    if(!req.body.name || !req.body.releaseYear){
+        return res.status(400).json({
+            status:"Failure",
+            message: "Not a valid reqeust"
+        })
+    }
+    next();
+}
+
 exports.getAllMovies = (req,res)=>{
     res.status(200).json({
         status:'success',
