@@ -9,6 +9,11 @@ const express = require('express');
 const router = express.Router();
 const movieController = require('../controllers/movieController')
 
+// param is another middlewear 
+// which only runs on routing with parameter with request
+// Value is stored the param valud of ID which sent by user
+router.param('id',movieController.checkID)
+
 router.route('/')
     .get(movieController.getAllMovies)
     .post(movieController.createMovie)

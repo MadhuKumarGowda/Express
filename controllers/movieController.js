@@ -4,6 +4,24 @@ Created on 08th Feb 2024 by Madhu Kumar K S
 */
 const fs = require('fs');
 const movies = JSON.parse(fs.readFileSync('./data/movies.json'));
+let movie;
+
+
+// Middlewear to validate the reqeusted id is valid or not
+exports.checkID = (req,res,next,value)=>{
+    console.log("movie ID", value);
+    movie = movies.find((item)=>{
+        item.id === value * 1;
+    })
+    if(!movie){
+        return res.status(404).json({
+            status: 'Failure',
+            data: {
+                message: `Movie with ID ${value} not found`            }
+         })
+     }
+    next();
+}
 
 exports.getAllMovies = (req,res)=>{
     res.status(200).json({
@@ -18,21 +36,13 @@ exports.getAllMovies = (req,res)=>{
 
 exports.getMovie = (req,res)=>{
     const id = +req.params.id;
-    const movie = movies.find((item)=>{
-        item.id === id;
-    })
+   
     if(movie){
        res.status(200).json({
            status: 'success',
            data: {
                movies: movie
            }
-        })
-    }else{
-       res.status(404).json({
-           status: 'Failure',
-           data: {
-               message: `Movie with ID ${id} not found`            }
         })
     }
 }
@@ -54,13 +64,6 @@ exports.updateMovie = (req,res)=>{
           }
          })
      });
-    }else{
-     res.status(404).json({
-         status: "Fail",
-         data:{
-             message: `Movie with ID ${id} not found` 
-         }
-        })
     }
 }
 
