@@ -13,9 +13,9 @@ const logger = function(req,res,next){
     next();
 }
 
-// Below is the one of the middlewaer, it will modify the 
+// Below is the one of the middlewaer, it will modify the  
 // incoming reqeust
-app.use(express.json())
+app.use(express.json()) // this express.json() is not middlewear but it returns middlewear function
 app.use(logger);
 
 const movies = JSON.parse(fs.readFileSync('./data/movies.json'));
@@ -30,7 +30,7 @@ const movies = JSON.parse(fs.readFileSync('./data/movies.json'));
 
 // this is GET method which perform read operation of data from server
 // For demo purpose, i am reading data from local json file
-app.get('/',(req,res)=>{
+app.get('/api',(req,res)=>{
        res.status(200).json({
         status: "success",
         count: movies.length,
